@@ -16,16 +16,18 @@ class Inventory:  # store item  for user
             return
         self.items.append(item)
 
-    def use_item(self, index):
+    def use_item(self, index, player):
         if index >= len(self.items) or index < 0:
             print("index out of range")
-        # TODO: use item
-        self.items.pop(index)
+        # use item
+        item = self.items.pop(index)
+        item.apply_effect(player)  # Apply effect to the player
+        # print(f"{player.name} used {item.name}.")
 
     def discard_item(self, index):
 
         if index >= len(self.items) or index < 0:
             print("index out of range")
-        # TODO: discard and sale item
-        self.items[index].cost
+        # discard and sale item for half price
+        self.coin += self.items[index].cost // 2
         self.items.pop(index)
