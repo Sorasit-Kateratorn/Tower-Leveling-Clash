@@ -4,4 +4,4 @@ from classes.Gameplay import GamePlay
 
 if __name__ == "__main__":
     game = GamePlay()
-    game.run_game_loop()
+    game.game_loop()
