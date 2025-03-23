@@ -97,11 +97,11 @@ class GamePlay:
                 self.battle_log = f"You defeated all enemies! Victory!"
                 self.state = "victory"
 
-            elif self.state == "game_over":
-                draw_game_over(self.screen)
+        elif self.state == "game_over":
+            draw_game_over(self.screen)
 
-            elif self.state == "victory":
-                draw_game_victory(self.screen)
+        elif self.state == "victory":
+            draw_game_victory(self.screen)
 
         self.clock.tick(10)
         pg.display.update()
