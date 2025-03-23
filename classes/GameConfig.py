@@ -9,7 +9,8 @@ class Config:
         'GREEN': (0, 255, 0),
         'RED': (255, 0, 0),
         'WHITE': (200, 255, 255),
-        'DarkBrown': (189, 150, 25),
+        'DARKBROWN': (189, 150, 25),
+        'YELLOW': (255, 255, 0),
     }
 
     @classmethod
