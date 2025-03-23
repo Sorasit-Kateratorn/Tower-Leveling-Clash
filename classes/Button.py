@@ -16,13 +16,16 @@ class Button(pg.sprite.Sprite):
     def draw(self, screen):
         # get mouse position
         mouse_pos = pg.mouse.get_pos()
+        action = False
 
         if self.rect.collidepoint(mouse_pos):
             if pg.mouse.get_pressed()[0] == 1 and self.clicked == False:
                 print("Cliked")
                 self.clicked = True
+                action = True
 
         if pg.mouse.get_pressed()[0] == 0:
             self.clicked = False
 
         screen.blit(self.image, (self.rect.x, self.rect.y))
+        return action
