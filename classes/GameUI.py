@@ -20,7 +20,7 @@ def draw_home_screen(screen):
     title_text = font.render(
         f'Tower Leveling Clash', True, Config.get("BLACK"))
     title_text2 = font.render(
-        f'Tower Leveling Clash', True, Config.get("DarkBrown"))
+        f'Tower Leveling Clash', True, Config.get("DARKBROWN"))
 
     home_bg.draw(screen)
     start_click = start_button.draw(screen)
@@ -53,7 +53,7 @@ def draw_selected_character_screen(screen):
                               True, Config.get("BLACK"))
 
     title_text2 = title_font.render(
-        f'Select Your Character', True, Config.get("DarkBrown"))
+        f'Select Your Character', True, Config.get("DARKBROWN"))
     home_bg.draw(screen)
     screen.blit(title, (158, 100))
     screen.blit(title_text2, (155, 100))
@@ -72,7 +72,7 @@ def draw_selected_character_screen(screen):
     return selected_character
 
 
-def draw_battle_screen(screen, player, enemies):
+def draw_battle_screen(screen, player, enemies, battle_log=""):
     screen.fill(Config.get('BLACK'))
     font = pg.font.Font("font/PixelifySans-Bold.ttf", 20)
     battle_bg = Background("image/Backgroundgrass.png", [0, 0])
@@ -101,7 +101,6 @@ def draw_battle_screen(screen, player, enemies):
         enemy_name = font.render(enemy.name, True, Config.get("RED"))
         screen.blit(enemy_name, (x, 200))
 
-        # Optional: Show enemy stats too
         stats_health = f"HP: {enemy.health}"
         stats_attack = f"ATK: {enemy.attack}"
         stats_defence = f"DEF: {enemy.defense}"
@@ -111,3 +110,20 @@ def draw_battle_screen(screen, player, enemies):
         screen.blit(stats_text1, (x, 330))
         screen.blit(stats_text2, (x, 375))
         screen.blit(stats_text3, (x, 410))
+        # Draw battle log
+    log_text = font.render(battle_log, True, Config.get("YELLOW"))
+    screen.blit(log_text, (50, 100))
+
+
+def draw_game_over(screen):
+    screen.fill(Config.get("BLACK"))
+    font = pg.font.Font("font/PixelifySans-Bold.ttf", 60)
+    text = font.render("GAME OVER", True, Config.get("RED"))
+    screen.blit(text, (300, 250))
+
+
+def draw_game_victory(screen):
+    screen.fill(Config.get("WHITE"))
+    font = pg.font.Font("font/PixelifySans-Bold.ttf", 60)
+    text = font.render("VICTORY!", True,  Config.get("RED"))
+    screen.blit(text, (300, 250))
