@@ -1,6 +1,6 @@
-from Item import *
+from classes.Item import *
+from classes.Inventory import Inventory
 import random
-from Inventory import Inventory
 
 
 class Shop:  # store item in shop for buy and generate new one to complete 5 items set in shop always
