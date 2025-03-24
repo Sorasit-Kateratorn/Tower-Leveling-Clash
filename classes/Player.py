@@ -21,7 +21,7 @@ class Wizard(Character):
 
 class Omen(Character):
     def __init__(self):
-        super().__init__("image/Omen.png", "Omen", 90, 18, 8, "Shadow Strike")
+        super().__init__("image/Omen.png", "Omen", 90, 18, 0, "Shadow Strike")
 
     def use_ability(self, enemy):
         print(f"{self.name} uses Shadow Strike and evades the next attack!")
@@ -31,7 +31,7 @@ class Omen(Character):
 
 class Hulk(Character):
     def __init__(self):
-        super().__init__("image/Hulk.png", "Hulk", 120, 12, 15, "Healing Factor")
+        super().__init__("image/Hulk.png", "Hulk", 120, 12, 1, "Healing Factor")
 
     def use_ability(self, enemy):
         print(f"{self.name} activates Healing Factor!")
