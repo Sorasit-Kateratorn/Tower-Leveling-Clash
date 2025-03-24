@@ -6,6 +6,7 @@ from classes.GameUI import *
 from classes.GameConfig import *
 from classes.Background import *
 from classes.Shop import *
+from classes.GameStats import *
 import pygame as pg
 import random
 
@@ -29,6 +30,7 @@ class GamePlay:
         self.inventory = Inventory()
         self.inventory.add_coin(0)  # Give starter coins
         self.shop = Shop()
+        self.stats = GameStats()
 
         self.ui = GameUI(self.screen)
 

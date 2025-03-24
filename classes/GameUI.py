@@ -1,12 +1,9 @@
-# เปิดการด์เรียก pygameเเล้วเรียกfunction take damage ของคลาส enermyของเรา
 import pygame as pg
 from classes.Background import *
 from classes.GameConfig import *
 from classes.Button import *
 from classes.Sound import *
 from classes.Player import *
-
-# TODO gameUI uml
 
 
 class GameUI:
