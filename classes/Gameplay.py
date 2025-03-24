@@ -30,6 +30,8 @@ class GamePlay:
         self.inventory.add_coin(0)  # Give starter coins
         self.shop = Shop()
 
+        self.ui = GameUI(self.screen)
+
         self.attack_button = Button("image/attack.png", (50, 450), 0.5)
         self.shop_button = Button("image/shop.png", (650, 450), 0.5)
         self.inventory_button = Button(
@@ -38,7 +40,7 @@ class GamePlay:
 
     def screen_update(self):
         if self.state == "home":
-            result = draw_home_screen(self.screen)
+            result = self.ui.draw_home_screen()
             if result == "start":
                 print("start button click")
                 self.state = "main_game"
@@ -48,7 +50,7 @@ class GamePlay:
                 return
 
         elif self.state == "main_game":
-            selected = draw_selected_character_screen(self.screen)
+            selected = self.ui.draw_selected_character_screen()
             if selected:
                 print("Selected character:", selected.name)
                 self.selected_character = selected
@@ -56,8 +58,8 @@ class GamePlay:
                 self.state = "battle"
 
         elif self.state == "battle":
-            draw_battle_screen(
-                self.screen, self.selected_character, self.enemies, self.battle_log)
+            self.ui.draw_battle_screen(
+                self.selected_character, self.enemies, self.battle_log)
             if self.current_turn == "player":
                 if self.attack_button.draw(self.screen):
                     if self.enemy_index < len(self.enemies):
@@ -116,14 +118,14 @@ class GamePlay:
                 self.state = "victory"
 
         elif self.state == "shop":
-            draw_shop_screen(self.screen, self.shop, self.inventory)
+            self.ui.draw_shop_screen(self.shop, self.inventory)
 
             keys = pg.key.get_pressed()
             if keys[pg.K_SPACE]:
                 self.state = "battle"
 
         elif self.state == "inventory":
-            result = draw_inventory_screen(self.screen, self.inventory)
+            result = self.ui.draw_inventory_screen(self.inventory)
             if result == "back":
                 self.state = "battle"
 
@@ -132,10 +134,10 @@ class GamePlay:
                 self.state = "battle"
 
         elif self.state == "game_over":
-            draw_game_over(self.screen)
+            self.ui.draw_game_over()
 
         elif self.state == "victory":
-            draw_game_victory(self.screen)
+            self.ui.draw_game_victory()
 
         self.clock.tick(10)
         pg.display.update()
