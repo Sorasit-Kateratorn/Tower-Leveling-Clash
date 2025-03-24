@@ -37,7 +37,7 @@ def draw_home_screen(screen):
 
 
 characters = [Wonderwoman(), Wizard(), Omen(), Hulk(), Predator()]
-positions = [(50, 200), (250, 200), (450, 200), (650, 200), (850, 200)]
+positions = [(80, 200), (220, 200), (360, 200), (500, 200), (640, 200)]
 
 # Create buttons ONCE (outside the function)
 character_buttons = [Button(char.image, pos, 1.0)
@@ -127,3 +127,63 @@ def draw_game_victory(screen):
     font = pg.font.Font("font/PixelifySans-Bold.ttf", 60)
     text = font.render("VICTORY!", True,  Config.get("RED"))
     screen.blit(text, (300, 250))
+
+
+def draw_shop_screen(screen, shop, inventory):
+    screen.fill(Config.get("DARKBLUE"))
+    font = pg.font.Font(None, 28)
+    title = font.render("Welcome to the Shop!", True, Config.get("YELLOW"))
+    screen.blit(title, (300, 50))
+
+    # Display coins
+    coin_text = font.render(
+        f"Coins: {inventory.coin}", True, Config.get("WHITE"))
+    screen.blit(coin_text, (600, 50))
+
+    for i, item in enumerate(shop.items_in_shop):
+        x = 50 + i * 180
+        y = 120
+        img = pg.image.load(item.image)
+        img = pg.transform.scale(img, (80, 80))
+        screen.blit(img, (x, y))
+        screen.blit(font.render(item.name, True, (255, 255, 255)), (x, y + 85))
+        screen.blit(font.render(f"{item.cost} coins",
+                    True, (200, 200, 0)), (x, y + 110))
+
+        # clickable item box
+        rect = pg.Rect(x, y, 80, 80)
+        if rect.collidepoint(pg.mouse.get_pos()) and pg.mouse.get_pressed()[0]:
+            shop.buy_item(inventory, i)
+
+    # Instruction
+    screen.blit(font.render(
+        "Click an item to buy. Press [SPACE] to start battle.", True, (180, 180, 180)), (50, 400))
+
+
+def draw_inventory_screen(screen, inventory):
+    screen.fill(Config.get("DARKBLUE"))
+    font = pg.font.Font(None, 28)
+    title = font.render("Your Inventory", True, Config.get("WHITE"))
+    screen.blit(title, (300, 50))
+
+    # Display coins
+    coin_text = font.render(f"Coins: {inventory.coin}", True, (255, 255, 0))
+    screen.blit(coin_text, (600, 50))
+
+    # List items in inventory
+    for i, item in enumerate(inventory.items):
+        x = 50
+        y = 120 + i * 100
+        img = pg.image.load(item.image)
+        img = pg.transform.scale(img, (80, 80))
+        screen.blit(img, (x, y))
+        screen.blit(font.render(item.name, True,
+                    (255, 255, 255)), (x + 90, y + 20))
+
+    # Draw "back" button
+    back_button = Button("image/back_to_battle.png", (50, 300), 0.5)
+    if back_button.draw(screen):
+        return "back"
+
+    screen.blit(font.render(
+        "Press [SPACE] or click Back to return to battle.", True, (180, 180, 180)), (50, 450))

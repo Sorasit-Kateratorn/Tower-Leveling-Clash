@@ -5,6 +5,7 @@ from classes.Item import *
 from classes.GameUI import *
 from classes.GameConfig import *
 from classes.Background import *
+from classes.Shop import *
 import pygame as pg
 import random
 
@@ -25,7 +26,15 @@ class GamePlay:
         self.current_turn = "player"  # could be "player" or "enemies"
         self.enemy_index = 0          # tracks which enemy is being attacked
         self.battle_log = ""          # message log for attacks
+        self.inventory = Inventory()
+        self.inventory.add_coin(0)  # Give starter coins
+        self.shop = Shop()
+
         self.attack_button = Button("image/attack.png", (50, 450), 0.5)
+        self.shop_button = Button("image/shop.png", (650, 450), 0.5)
+        self.inventory_button = Button(
+            "image/inventory.png", (350, 450), 0.5)
+        self.use_item_button = Button("image/use_item.png", (200, 450), 0.5)
 
     def screen_update(self):
         if self.state == "home":
@@ -74,6 +83,15 @@ class GamePlay:
                         self.enemy_index = 0
                         self.current_turn = "enemies"
 
+                if self.shop_button.draw(self.screen):
+                    self.state = "shop"
+
+                if self.inventory_button.draw(self.screen):
+                    self.state = "inventory"
+
+                if self.use_item_button.draw(self.screen):
+                    pass
+
             elif self.current_turn == "enemies":
                 if self.enemy_index < len(self.enemies):
                     attacker = self.enemies[self.enemy_index]
@@ -96,6 +114,22 @@ class GamePlay:
             if self.enemies is not None and not self.enemies:
                 self.battle_log = f"You defeated all enemies! Victory!"
                 self.state = "victory"
+
+        elif self.state == "shop":
+            draw_shop_screen(self.screen, self.shop, self.inventory)
+
+            keys = pg.key.get_pressed()
+            if keys[pg.K_SPACE]:
+                self.state = "battle"
+
+        elif self.state == "inventory":
+            result = draw_inventory_screen(self.screen, self.inventory)
+            if result == "back":
+                self.state = "battle"
+
+            keys = pg.key.get_pressed()
+            if keys[pg.K_SPACE] or keys[pg.K_ESCAPE]:
+                self.state = "battle"
 
         elif self.state == "game_over":
             draw_game_over(self.screen)
