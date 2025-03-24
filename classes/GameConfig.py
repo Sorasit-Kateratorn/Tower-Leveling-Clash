@@ -11,6 +11,7 @@ class Config:
         'WHITE': (200, 255, 255),
         'DARKBROWN': (189, 150, 25),
         'YELLOW': (255, 255, 0),
+        'DARKBLUE': (20, 20, 40),
     }
 
     @classmethod
