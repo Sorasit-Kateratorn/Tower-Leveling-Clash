@@ -150,6 +150,11 @@ class GameUI:
             if rect.collidepoint(pg.mouse.get_pos()) and pg.mouse.get_pressed()[0]:
                 shop.buy_item(inventory, i)
 
+                # Draw "back" button
+        back_button = Button("image/back_to_battle.png", (50, 300), 0.5)
+        if back_button.draw(self.screen):
+            return "back"
+
         # Instruction
         self.screen.blit(font.render(
             "Click an item to buy. Press [SPACE] to start battle.", True, (180, 180, 180)), (50, 400))
@@ -181,4 +186,4 @@ class GameUI:
             return "back"
 
         self.screen.blit(font.render(
-            "Press [SPACE] or click Back to return to battle.", True, (180, 180, 180)), (50, 450))
+            "Press [SPACE] or click Back to return to battle.", True, Config.get("GRAY")), (50, 450))

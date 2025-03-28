@@ -120,7 +120,9 @@ class GamePlay:
                 self.state = "victory"
 
         elif self.state == "shop":
-            self.ui.draw_shop_screen(self.shop, self.inventory)
+            result = self.ui.draw_shop_screen(self.shop, self.inventory)
+            if result == "back":
+                self.state = "battle"
 
             keys = pg.key.get_pressed()
             if keys[pg.K_SPACE]:
@@ -161,4 +163,4 @@ class GamePlay:
             self.screen_update()
 
     def game_reset(self):
-        self.__game_over = False
+        self.game_over = False
