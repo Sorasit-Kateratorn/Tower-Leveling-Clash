@@ -9,7 +9,7 @@ class Character:
         self.level = level
 
     def attack_enemy(self, enemy):
-        damage = max(0, self.attack - enemy.defense)
+        damage = self.attack
         actual_damage = enemy.take_damage(damage)
         return actual_damage
 
@@ -17,10 +17,18 @@ class Character:
         pass
 
     def take_damage(self, damage):
-        # Ensure damage doesn't go below 0
-        effective_damage = max(damage - self.defense, 0)
-        self.health -= effective_damage
-        return effective_damage
+
+        # Absorb damage with defense
+        damage_to_defense = min(self.defense, damage)
+        self.defense -= damage_to_defense
+        self.defense = max(self.defense, 0)  # Prevent negative defense
+
+        # Apply leftover damage to health
+        remaining_damage = damage - damage_to_defense
+        self.health -= remaining_damage
+        self.health = max(self.health, 0)  # Prevent negative health
+
+        return damage_to_defense + remaining_damage
 
     def level_up(self):
         self.level += 1
