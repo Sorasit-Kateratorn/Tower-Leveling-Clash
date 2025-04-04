@@ -24,10 +24,8 @@ class GameUI:
         quit_button = Button("image/quitbutton.png", [325, 400], 0.5)
         # sound = Sound("sound/adventure-music-229534.mp3", -1, 0, 0.1)
 
-        title_text = font.render(
-            f'Tower Leveling Clash', True, Config.get("BLACK"))
-        title_text2 = font.render(
-            f'Tower Leveling Clash', True, Config.get("DARKBROWN"))
+        title_text = font.render(f'Tower Leveling Clash', True, Config.get("BLACK"))
+        title_text2 = font.render(f'Tower Leveling Clash', True, Config.get("DARKBROWN"))
 
         home_bg.draw(self.screen)
         start_click = start_button.draw(self.screen)
@@ -47,11 +45,9 @@ class GameUI:
         title_font = pg.font.Font("font/PixelifySans-Bold.ttf", 50)
         name_font = pg.font.Font("font/PixelifySans-Bold.ttf", 20)
         home_bg = Background("image/Backgroundcastle.png", [0, 0])
-        title = title_font.render("Select Your Character",
-                                  True, Config.get("BLACK"))
+        title = title_font.render("Select Your Character",True, Config.get("BLACK"))
 
-        title_text2 = title_font.render(
-            f'Select Your Character', True, Config.get("DARKBROWN"))
+        title_text2 = title_font.render(f'Select Your Character', True, Config.get("DARKBROWN"))
         home_bg.draw(self.screen)
         self.screen.blit(title, (158, 100))
         self.screen.blit(title_text2, (155, 100))
@@ -134,30 +130,59 @@ class GameUI:
             f"Coins: {inventory.coin}", True, Config.get("WHITE"))
         self.screen.blit(coin_text, (600, 50))
 
+        items_per_row = 4
+        item_width = 100
+        item_height = 150
+        padding_x = 40
+        padding_y = 30
+
+        start_x = 60
+        start_y = 120
+
+        message = ""
+
+        # Helper to truncate long names
+        def truncate_text(text, max_length=12):
+            return text if len(text) <= max_length else text[:max_length - 3] + "..."
+
         for i, item in enumerate(shop.items_in_shop):
-            x = 50 + i * 180
-            y = 120
+            row = i // items_per_row
+            col = i % items_per_row
+            x = start_x + col * (item_width + padding_x)
+            y = start_y + row * (item_height + padding_y)
+
+            # Draw item image
             img = pg.image.load(item.image)
             img = pg.transform.scale(img, (80, 80))
             self.screen.blit(img, (x, y))
-            self.screen.blit(font.render(item.name, True,
-                                         (255, 255, 255)), (x, y + 85))
-            self.screen.blit(font.render(f"{item.cost} coins",
-                                         True, (200, 200, 0)), (x, y + 110))
+
+            # Centered item name
+            name_text = truncate_text(item.name)
+            name_surface = font.render(name_text, True, Config.get("WHITE"))
+            name_rect = name_surface.get_rect(center=(x + 40, y + 90))
+            self.screen.blit(name_surface, name_rect)
+
+            # Centered coin cost
+            cost_surface = font.render(f"{item.cost} coins", True, Config.get("YELLOW"))
+            cost_rect = cost_surface.get_rect(center=(x + 40, y + 115))
+            self.screen.blit(cost_surface, cost_rect)
 
             # clickable item box
             rect = pg.Rect(x, y, 80, 80)
             if rect.collidepoint(pg.mouse.get_pos()) and pg.mouse.get_pressed()[0]:
-                shop.buy_item(inventory, i)
+                if not shop.buy_item(inventory, i):
+                    message = "Not enough coins!"
 
-                # Draw "back" button
-        back_button = Button("image/back_to_battle.png", (50, 300), 0.5)
+        if message:
+            error_surface = font.render(message, True, Config.get("RED"))
+            self.screen.blit(error_surface, (50, 480))
+
+        back_button = Button("image/back_to_battle.png", (600, 300), 0.5)
         if back_button.draw(self.screen):
             return "back"
 
-        # Instruction
-        self.screen.blit(font.render(
-            "Click an item to buy. Press [SPACE] to start battle.", True, (180, 180, 180)), (50, 400))
+
+        self.screen.blit(font.render("Click an item to buy. Press [SPACE] or click Back button to start battle.", True, (180, 180, 180)), (50, 550))
 
     def draw_inventory_screen(self, inventory):
         self.screen.fill(Config.get("DARKBLUE"))
@@ -165,9 +190,8 @@ class GameUI:
         title = font.render("Your Inventory", True, Config.get("WHITE"))
         self.screen.blit(title, (300, 50))
 
-        # Display coins
-        coin_text = font.render(
-            f"Coins: {inventory.coin}", True, Config.get("YELLOW"))
+
+        coin_text = font.render(f"Coins: {inventory.coin}", True, Config.get("YELLOW"))
         self.screen.blit(coin_text, (600, 50))
 
         # List items in inventory
@@ -177,13 +201,10 @@ class GameUI:
             img = pg.image.load(item.image)
             img = pg.transform.scale(img, (80, 80))
             self.screen.blit(img, (x, y))
-            self.screen.blit(font.render(item.name, True,
-                                         Config.get("WHITE")), (x + 90, y + 20))
+            self.screen.blit(font.render(item.name, True,Config.get("WHITE")), (x + 90, y + 20))
 
-        # Draw "back" button
-        back_button = Button("image/back_to_battle.png", (50, 300), 0.5)
+        back_button = Button("image/back_to_battle.png", (600, 300), 0.5)
         if back_button.draw(self.screen):
             return "back"
 
-        self.screen.blit(font.render(
-            "Press [SPACE] or click Back to return to battle.", True, Config.get("GRAY")), (50, 450))
+        self.screen.blit(font.render("Press [SPACE] or click Back button to return to battle.", True, Config.get("GRAY")), (50, 550))

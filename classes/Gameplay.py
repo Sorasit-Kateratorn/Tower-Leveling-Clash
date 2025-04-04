@@ -28,9 +28,11 @@ class GamePlay:
         self.enemy_index = 0          # tracks which enemy is being attacked
         self.battle_log = ""          # message log for attacks
         self.inventory = Inventory()
-        self.inventory.add_coin(0)  # Give starter coins
+        self.inventory.add_coin(100)  # Give starter coins
         self.shop = Shop()
         self.stats = GameStats()
+        self.floor = 1
+        self.using_item = False
 
         self.ui = GameUI(self.screen)
 
@@ -38,7 +40,7 @@ class GamePlay:
         self.shop_button = Button("image/shop.png", (650, 450), 0.5)
         self.inventory_button = Button(
             "image/inventory.png", (350, 450), 0.5)
-        self.use_item_button = Button("image/use_item.png", (200, 450), 0.5)
+        self.use_skill_button = Button("image/use_skill.png", (200, 450), 0.5)
 
     def screen_update(self):
         if self.state == "home":
@@ -93,7 +95,7 @@ class GamePlay:
                 if self.inventory_button.draw(self.screen):
                     self.state = "inventory"
 
-                if self.use_item_button.draw(self.screen):
+                if self.use_skill_button.draw(self.screen):
                     pass
 
             elif self.current_turn == "enemies":
@@ -110,7 +112,7 @@ class GamePlay:
                 else:
                     self.enemy_index = 0
                     self.current_turn = "player"
-                    # End game conditions
+                  
             if self.selected_character and self.selected_character.health <= 0:
                 self.battle_log = f"{self.selected_character.name} has fallen! Game Over."
                 self.state = "game_over"
@@ -119,6 +121,8 @@ class GamePlay:
                 self.battle_log = f"You defeated all enemies! Victory!"
                 self.state = "victory"
 
+        
+        
         elif self.state == "shop":
             result = self.ui.draw_shop_screen(self.shop, self.inventory)
             if result == "back":
@@ -141,7 +145,24 @@ class GamePlay:
             self.ui.draw_game_over()
 
         elif self.state == "victory":
-            self.ui.draw_game_victory()
+            if self.floor >= 10:
+                self.ui.draw_game_victory()
+            
+            else:
+                font = pg.font.Font("font/PixelifySans-Bold.ttf", 40)
+                self.screen.fill(Config.get("WHITE"))
+                text = font.render(f"Floor {self.floor} Cleared! +15 Coins", True, Config.get("BLACK"))
+                self.screen.blit(text, (200, 250))     
+            
+
+                self.inventory.add_coin(15)
+
+                pg.display.update()
+                pg.time.delay(2000)  # Wait 2 sec to show message
+
+                self.next_floor()
+                self.state = "battle"
+            
 
         self.clock.tick(10)
         pg.display.update()
@@ -161,6 +182,13 @@ class GamePlay:
         while self.running:
             self.user_event()
             self.screen_update()
+            
+    def next_floor(self):
+        self.floor += 1
+        self.enemy_index = 0
+        self.current_turn = "player"
+        self.selected_character.defense = max(0, self.selected_character.defense)  # Reset buffs if needed
+        self.generate_enemies()
 
     def game_reset(self):
         self.game_over = False

@@ -19,7 +19,7 @@ class Shop:  # store item in shop for buy and generate new one to complete 5 ite
     def buy_item(self, inventory, index):
         if index < 0 or index >= len(self.items_in_shop):
             print("Invalid item selection")
-            return
+            return False
         item = self.items_in_shop[index]
         if inventory.coin >= item.cost:
             inventory.coin -= item.cost
@@ -27,18 +27,8 @@ class Shop:  # store item in shop for buy and generate new one to complete 5 ite
             print(f"Bought {item.name} for {item.cost} coins")
             self.items_in_shop[index] = random.choice(
                 self.available_items)  # Generate a new item
+            self.items_in_shop[index] = random.choice(self.available_items)
         else:
             print("Not enough coins")
+            return False
 
-
-# check the shop
-if __name__ == "__main__":
-    inventory = Inventory()
-    shop = Shop()
-
-    print("Items available in the shop:")
-    for i, item in enumerate(shop.items_in_shop):
-        print(f"{i+1}. {item.name} - {item.cost} coins")
-
-    inventory.add_coin(50)
-    shop.buy_item(inventory, 0)  # Buy first item in the shop
