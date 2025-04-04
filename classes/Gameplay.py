@@ -149,7 +149,7 @@ class GamePlay:
         elif self.state == "inventory_action":
             result = self.ui.draw_item_action_popup(self.selected_item)
             if result == "use":
-                self.selected_item.apply_effect(self.selected_character)
+                self.selected_item.apply_effect(self.selected_character, self.inventory)
                 self.inventory.remove_item(self.selected_item)
                 self.selected_item = None
                 self.state = "inventory"
