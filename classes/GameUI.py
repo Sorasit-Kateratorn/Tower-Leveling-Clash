@@ -194,6 +194,7 @@ class GameUI:
         coin_text = font.render(f"Coins: {inventory.coin}", True, Config.get("YELLOW"))
         self.screen.blit(coin_text, (600, 50))
 
+        selected_item = None
         # List items in inventory
         for i, item in enumerate(inventory.items):
             x = 50
@@ -203,8 +204,43 @@ class GameUI:
             self.screen.blit(img, (x, y))
             self.screen.blit(font.render(item.name, True,Config.get("WHITE")), (x + 90, y + 20))
 
+            # clickable item box
+            rect = pg.Rect(x, y, 80, 80)
+            if rect.collidepoint(pg.mouse.get_pos()) and pg.mouse.get_pressed()[0]:
+                selected_item = item  # Save this clicked item
+        
+        
+        
+        
         back_button = Button("image/back_to_battle.png", (600, 300), 0.5)
         if back_button.draw(self.screen):
             return "back"
 
+        elif selected_item:
+            return selected_item
+
         self.screen.blit(font.render("Press [SPACE] or click Back button to return to battle.", True, Config.get("GRAY")), (50, 550))
+        
+    def draw_item_action_popup(self, item):
+        self.screen.fill(Config.get("DARKBLUE"))
+        font = pg.font.Font(None, 28)
+
+        prompt = font.render(f"What do you want to do with {item.name}?", True, Config.get("YELLOW"))
+        self.screen.blit(prompt, (200, 200))
+
+        item_img = pg.image.load(item.image)
+        item_img = pg.transform.scale(item_img, (100, 100))
+        self.screen.blit(item_img, (350, 250))
+
+        use_button = Button("image/use_item.png", (250, 400), 0.5)
+        discard_button = Button("image/discard_items.png", (450, 400), 0.5)
+        back_button = Button("image/inventory.png", (350, 500), 0.5)
+
+        if use_button.draw(self.screen):
+            return "use"
+        if discard_button.draw(self.screen):
+            return "discard"
+        if back_button.draw(self.screen):
+            return "back"
+
+        return None

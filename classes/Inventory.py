@@ -11,7 +11,7 @@ class Inventory:  # store item  for user
         self.coin += coin
 
     def add_item(self, item):
-        if len(self.items) > self.max_slot:
+        if len(self.items) >= self.max_slot:
             print("Cant add more items")
             return
         self.items.append(item)
@@ -23,6 +23,7 @@ class Inventory:  # store item  for user
         item = self.items.pop(index)
         item.apply_effect(player)  # Apply effect to the player
         # print(f"{player.name} used {item.name}.")
+        return True
 
     def discard_item(self, index):
 
@@ -31,3 +32,9 @@ class Inventory:  # store item  for user
         # discard and sale item for half price
         self.coin += self.items[index].cost // 2
         self.items.pop(index)
+        return True
+        
+    def remove_item(self, item):
+        
+        if item in self.items:
+            self.items.remove(item)

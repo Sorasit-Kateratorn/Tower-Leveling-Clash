@@ -17,8 +17,6 @@ class GamePlay:
         pg.init()
         self.screen = pg.display.set_mode(
             (Config.get('WIN_SIZE_W'), Config.get('WIN_SIZE_H')))
-        # draw_home_screen(self.screen)
-        # draw_selected_character_screen(self.screen)
         self.clock = pg.time.Clock()
         self.running = True
         self.state = "home"
@@ -33,14 +31,16 @@ class GamePlay:
         self.stats = GameStats()
         self.floor = 1
         self.using_item = False
+        self.selected_item = None
+        
+        
 
         self.ui = GameUI(self.screen)
 
         self.attack_button = Button("image/attack.png", (50, 450), 0.5)
-        self.shop_button = Button("image/shop.png", (650, 450), 0.5)
-        self.inventory_button = Button(
-            "image/inventory.png", (350, 450), 0.5)
-        self.use_skill_button = Button("image/use_skill.png", (200, 450), 0.5)
+        self.shop_button = Button("image/shop.png", (650, 10), 0.5)
+        self.inventory_button = Button("image/inventory.png", (650, 450), 0.5)
+        self.use_skill_button = Button("image/special_ability.png", (200, 500), 0.5)
 
     def screen_update(self):
         if self.state == "home":
@@ -136,11 +136,37 @@ class GamePlay:
             result = self.ui.draw_inventory_screen(self.inventory)
             if result == "back":
                 self.state = "battle"
+                
+            elif isinstance(result, Item):
+                self.selected_item = result
+                self.state = "inventory_action"
 
             keys = pg.key.get_pressed()
             if keys[pg.K_SPACE] or keys[pg.K_ESCAPE]:
                 self.state = "battle"
 
+        
+        elif self.state == "inventory_action":
+            result = self.ui.draw_item_action_popup(self.selected_item)
+            if result == "use":
+                self.selected_item.apply_effect(self.selected_character)
+                self.inventory.remove_item(self.selected_item)
+                self.selected_item = None
+                self.state = "inventory"
+
+            elif result == "discard":
+                self.inventory.add_coin(self.selected_item.cost // 2)
+                self.inventory.remove_item(self.selected_item)
+                self.selected_item = None
+                self.state = "inventory"
+
+            elif result == "back":
+                self.selected_item = None
+                self.state = "inventory"
+        
+        
+        
+        
         elif self.state == "game_over":
             self.ui.draw_game_over()
 
