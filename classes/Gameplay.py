@@ -62,8 +62,7 @@ class GamePlay:
                 self.state = "battle"
 
         elif self.state == "battle":
-            self.ui.draw_battle_screen(
-                self.selected_character, self.enemies, self.battle_log)
+            self.ui.draw_battle_screen(self.selected_character, self.enemies, self.battle_log, self.floor)
             if self.current_turn == "player":
                 if self.attack_button.draw(self.screen):
                     if self.enemy_index < len(self.enemies):

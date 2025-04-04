@@ -65,7 +65,7 @@ class GameUI:
             self.screen.blit(name_text, name_rect)
         return selected_character
 
-    def draw_battle_screen(self, player, enemies, battle_log=""):
+    def draw_battle_screen(self, player, enemies, battle_log="", floor=1):
         self.screen.fill(Config.get('BLACK'))
         font = pg.font.Font("font/PixelifySans-Bold.ttf", 20)
         battle_bg = Background("image/Backgroundgrass.png", [0, 0])
@@ -78,6 +78,9 @@ class GameUI:
 
         player_name = font.render(player.name, True, Config.get("WHITE"))
         self.screen.blit(player_name, (50, 200))
+        
+        floor_text = font.render(f"Floor: {floor}", True, Config.get("YELLOW"))
+        self.screen.blit(floor_text, (375,0))
 
         # Draw player stats
         stats = f"HP: {player.health}  ATK: {player.attack}  DEF: {player.defense}"
