@@ -1,3 +1,4 @@
+import random
 class Character:
     def __init__(self, image, name="none", health=0, attack=0, defense=0, special_ability="none", level=1):
         self.image = image
@@ -7,11 +8,44 @@ class Character:
         self.defense = defense
         self.special_ability = special_ability
         self.level = level
+        
+        
+        # attibute for support items
+        self.critical_chance = 0
+        self.vampire_mode = False
+        self.poison_enemy = False
+        self.poisoned = False
+        self.poison_turns = 0
+        self.extra_coin_boost = 0
+        
 
     def attack_enemy(self, enemy):
-        damage = self.attack
+        is_crit = random.randint(1,100) <= self.critical_chance
+        damage = self.attack * 2 if is_crit else self.attack
         actual_damage = enemy.take_damage(damage)
+        
+        if self.vampire_mode:
+            healed = int(actual_damage *0.5)
+            self.health += healed
+            self.vampire_mode = False
+        
+        if self.poison_enemy:
+            enemy.poisoned = True
+            enemy.poison_turns = 3
+            self.poison_enemy = False
+            
+
         return actual_damage
+
+    def apply_poison_damage(self):
+        if self.poisoned and self.poison_turns > 0 :
+            self.health -= 10
+            self.poison_turns -= 1
+            
+            if self.poison_turns == 0:
+                self.poisoned = False
+                
+
 
     def use_ability(self):
         pass

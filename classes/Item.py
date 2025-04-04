@@ -69,7 +69,7 @@ class VampireEssence(Item):
                          "Attacks heal 50% of the damage dealt for that turns.")
 
     def apply_effect(self, player):
-        pass
+        player.vampire_mode = True
 
 
 class Poison(Item):
@@ -78,4 +78,5 @@ class Poison(Item):
                          30, "Deal 10 damage to enemy for 3 turns")
 
     def apply_effect(self, player):
-        pass
+        player.apply_poison_turns = True
+        player.apply_poison_turn = 3
