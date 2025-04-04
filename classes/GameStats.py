@@ -49,11 +49,4 @@ class GameStats:
         }
 
     def to_csv(self):
-        return [
-            self.total_floors,
-            self.total_damage_dealt,
-            self.total_wins,
-            self.total_earned,
-            self.total_spent,
-            round(self.total_time, 2)
-        ]
+        pass

@@ -212,7 +212,19 @@ class GamePlay:
         self.floor += 1
         self.enemy_index = 0
         self.current_turn = "player"
-        self.selected_character.defense = max(0, self.selected_character.defense)  # Reset buffs if needed
+        
+        self.selected_character.level_up()
+        self.selected_character.health = min(100 + (self.selected_character.level - 1) * 10, 200)
+        
+        
+        self.selected_character.vampire_mode = False
+        self.selected_character.poison_enemy = False
+        self.selected_character.critical_chance = 0
+        self.selected_character.poisoned = False
+        self.selected_character.poison_turns = 0
+        
+        
+        self.selected_character.defense = max(0, self.selected_character.defense)  # Reset defense
         self.generate_enemies()
 
     def game_reset(self):
