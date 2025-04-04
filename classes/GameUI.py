@@ -223,18 +223,18 @@ class GameUI:
         
     def draw_item_action_popup(self, item):
         self.screen.fill(Config.get("DARKBLUE"))
-        font = pg.font.Font(None, 28)
+        font = pg.font.Font("font/PixelifySans-Bold.ttf", 28)
 
-        prompt = font.render(f"What do you want to do with {item.name}?", True, Config.get("YELLOW"))
-        self.screen.blit(prompt, (200, 200))
+        prompt = font.render(f"Do you want to use this {item.name} or discard it?", True, Config.get("YELLOW"))
+        self.screen.blit(prompt, (50, 100))
 
         item_img = pg.image.load(item.image)
         item_img = pg.transform.scale(item_img, (100, 100))
         self.screen.blit(item_img, (350, 250))
 
-        use_button = Button("image/use_item.png", (250, 400), 0.5)
-        discard_button = Button("image/discard_items.png", (450, 400), 0.5)
-        back_button = Button("image/inventory.png", (350, 500), 0.5)
+        use_button = Button("image/use_item.png", (150, 400), 0.5)
+        discard_button = Button("image/discard_items.png", (550, 400), 0.5)
+        back_button = Button("image/inventory.png", (350, 450), 0.5)
 
         if use_button.draw(self.screen):
             return "use"
