@@ -1,4 +1,4 @@
-class Item:  # item has 8 type
+class Item:  # item has 7 type
 
     def __init__(self, image, name, cost, ability):
         self.image = image
@@ -70,13 +70,3 @@ class VampireEssence(Item):
 
     def apply_effect(self, player, inventory = None):
         player.vampire_mode = True
-
-
-class Poison(Item):
-    def __init__(self):
-        super().__init__("image/poison.png", "Poison",
-                         30, "Deal 10 damage to enemy for 3 turns")
-
-    def apply_effect(self, player, inventory = None):
-        player.apply_poison_turns = True
-        player.apply_poison_turn = 3

@@ -221,10 +221,7 @@ class GamePlay:
         
         self.selected_character.level_up()
         self.selected_character.vampire_mode = False
-        self.selected_character.poison_enemy = False
         self.selected_character.critical_chance = 0
-        self.selected_character.poisoned = False
-        self.selected_character.poison_turns = 0
         
         self.generate_enemies()
 
