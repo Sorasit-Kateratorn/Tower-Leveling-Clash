@@ -196,16 +196,34 @@ class GameUI:
 
         coin_text = font.render(f"Coins: {inventory.coin}", True, Config.get("YELLOW"))
         self.screen.blit(coin_text, (600, 50))
+        
+        
+        items_per_row = 4
+        item_width = 100
+        item_height = 150
+        padding_x = 40
+        padding_y = 30
+
+        start_x = 60
+        start_y = 120
 
         selected_item = None
         # List items in inventory
         for i, item in enumerate(inventory.items):
-            x = 50
-            y = 120 + i * 100
+            row = i // items_per_row
+            col = i % items_per_row
+            
+            x = start_x + col * (item_width + padding_x)
+            y = start_y + row * (item_height + padding_y)
+            
             img = pg.image.load(item.image)
             img = pg.transform.scale(img, (80, 80))
             self.screen.blit(img, (x, y))
-            self.screen.blit(font.render(item.name, True,Config.get("WHITE")), (x + 90, y + 20))
+            
+            
+            name_surface =font.render(item.name, True,Config.get("WHITE"))
+            name_rect = name_surface.get_rect(center=(x+40,y+90))
+            self.screen.blit(name_surface, name_rect)
 
             # clickable item box
             rect = pg.Rect(x, y, 80, 80)
