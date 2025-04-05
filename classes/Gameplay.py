@@ -10,6 +10,8 @@ from classes.GameStats import *
 import pygame as pg
 import random
 
+# ก็คือเริ่มเกมมาก็เก็บstart time
+# เสร็จเเล้วก็เรียกเกมstatมาเก็บค่าไปอีกที
 
 class GamePlay:
 
@@ -170,7 +172,7 @@ class GamePlay:
             self.ui.draw_game_over()
 
         elif self.state == "victory":
-            if self.floor >= 10:
+            if self.floor >= 5:
                 self.ui.draw_game_victory()
             
             else:
@@ -194,7 +196,11 @@ class GamePlay:
 
     def generate_enemies(self):
         enemy_classes = [Clayman, Skull, Dragon, Stealer, DarkKnight]
-        self.enemies = [random.choice(enemy_classes)() for _ in range(3)]
+        self.enemies = []
+        for _ in range(3):
+            enemy = random.choice(enemy_classes)()
+            enemy.scale_to_level(self.floor)
+            self.enemies.append(enemy)
 
     def user_event(self):
         for ev in pg.event.get():
@@ -214,17 +220,12 @@ class GamePlay:
         self.current_turn = "player"
         
         self.selected_character.level_up()
-        self.selected_character.health = min(100 + (self.selected_character.level - 1) * 10, 200)
-        
-        
         self.selected_character.vampire_mode = False
         self.selected_character.poison_enemy = False
         self.selected_character.critical_chance = 0
         self.selected_character.poisoned = False
         self.selected_character.poison_turns = 0
         
-        
-        self.selected_character.defense = max(0, self.selected_character.defense)  # Reset defense
         self.generate_enemies()
 
     def game_reset(self):

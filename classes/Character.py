@@ -4,8 +4,11 @@ class Character:
         self.image = image
         self.name = name
         self.health = health
+        self.base_health = health
         self.attack = attack
+        self.base_attack = attack
         self.defense = defense
+        self.base_defense = defense
         self.special_ability = special_ability
         self.level = level
         
@@ -66,6 +69,12 @@ class Character:
 
     def level_up(self):
         self.level += 1
-        self.health += 10
-        self.attack += 5
-        self.defense += 5
+        self.health = self.base_health + (self.level - 1) * 10
+        self.attack = self.base_attack + (self.level - 1) * 5
+        self.defense = self.base_defense + (self.level - 1) * 5
+
+    def scale_to_level(self, level):
+        self.level = level
+        self.health += (level - 1) * 10
+        self.attack += (level - 1) * 3
+        self.defense += (level - 1) * 2
