@@ -9,8 +9,9 @@ class Character:
         self.base_attack = attack
         self.defense = defense
         self.base_defense = defense
-        self.special_ability = special_ability
+        self.special_ability = special_ability # for display the ability name ui
         self.level = level
+        self.ability_used = False
         
         
         # attibute for support items

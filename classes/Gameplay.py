@@ -97,7 +97,17 @@ class GamePlay:
                     self.state = "inventory"
 
                 if self.use_skill_button.draw(self.screen):
-                    pass
+                    if not self.selected_character.ability_used:
+                        if self.enemies:
+                            # Use ability (pass enemies list)
+                            self.battle_log = self.selected_character.use_ability(self.enemies)
+                            self.selected_character.ability_used = True
+                            self.current_turn = "enemies"  # End turn after using skill
+                        else:
+                            self.battle_log = "No enemies to use skill on!"
+                    
+                    else:
+                        self.battle_log = "Skill already used this floor!"
 
             elif self.current_turn == "enemies":
                 if self.enemy_index < len(self.enemies):
@@ -222,6 +232,7 @@ class GamePlay:
         self.selected_character.level_up()
         self.selected_character.vampire_mode = False
         self.selected_character.critical_chance = 0
+        self.selected_character.ability_used = False
         
         self.generate_enemies()
 
