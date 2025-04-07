@@ -17,8 +17,9 @@ class GamePlay:
 
     def __init__(self):
         pg.init()
-        self.screen = pg.display.set_mode(
-            (Config.get('WIN_SIZE_W'), Config.get('WIN_SIZE_H')))
+        self.music = Sound("sound/adventure-music-229534.mp3", -1,0,0.2)
+        self.music.play()
+        self.screen = pg.display.set_mode((Config.get('WIN_SIZE_W'), Config.get('WIN_SIZE_H')))
         self.clock = pg.time.Clock()
         self.running = True
         self.state = "home"
@@ -179,6 +180,7 @@ class GamePlay:
         
         
         elif self.state == "game_over":
+            pg.mixer.music.stop() 
             self.ui.draw_game_over()
 
         elif self.state == "victory":
