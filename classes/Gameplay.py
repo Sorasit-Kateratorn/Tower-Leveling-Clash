@@ -184,7 +184,7 @@ class GamePlay:
             self.ui.draw_game_over()
 
         elif self.state == "victory":
-            if self.floor >= 5:
+            if self.floor >= 3:
                 self.ui.draw_game_victory()
             
             else:

@@ -65,10 +65,21 @@ class GameUI:
             self.screen.blit(name_text, name_rect)
         return selected_character
 
+    def get_battle_background(self, floor):
+        if floor == 1:
+            return Background("image/Backgroundgrass.png", [0, 0])
+        elif floor == 2:
+            return Background("image/Backgroundsnow.png", [0, 0])
+        
+        else:
+            return Background("image/Backgroundcastle.png", [0, 0])
+        
+        
     def draw_battle_screen(self, player, enemies, battle_log="", floor=1):
         self.screen.fill(Config.get('BLACK'))
         font = pg.font.Font("font/PixelifySans-Bold.ttf", 20)
-        battle_bg = Background("image/Backgroundgrass.png", [0, 0])
+        battle_bg = self.get_battle_background(floor)
+
 
         battle_bg.draw(self.screen)
         # Draw player character on the left
@@ -76,7 +87,7 @@ class GameUI:
         player_img = pg.transform.scale(player_img, (120, 120))
         self.screen.blit(player_img, (50, 220))
 
-        player_name = font.render(player.name, True, Config.get("WHITE"))
+        player_name = font.render(player.name, True, Config.get("GREEN"))
         self.screen.blit(player_name, (50, 200))
         
         floor_text = font.render(f"Floor: {floor}", True, Config.get("YELLOW"))
@@ -84,7 +95,7 @@ class GameUI:
 
         # Draw player stats
         stats = f"HP: {player.health}  ATK: {player.attack}  DEF: {player.defense}"
-        stats_text = font.render(stats, True, (255, 255, 255))
+        stats_text = font.render(stats, True, Config.get("GREEN"))
         self.screen.blit(stats_text, (50, 350))
 
         # Draw enemies
@@ -244,7 +255,7 @@ class GameUI:
         
     def draw_item_action_popup(self, item):
         self.screen.fill(Config.get("DARKBLUE"))
-        font = pg.font.Font("font/PixelifySans-Bold.ttf", 28)
+        font = pg.font.Font("font/PixelifySans-Bold.ttf", 24)
 
         prompt = font.render(f"Do you want to use this {item.name} or discard it?", True, Config.get("YELLOW"))
         self.screen.blit(prompt, (50, 100))
