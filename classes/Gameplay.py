@@ -182,10 +182,18 @@ class GamePlay:
         elif self.state == "game_over":
             pg.mixer.music.stop() 
             self.ui.draw_game_over()
+            
+            keys = pg.key.get_pressed()
+            if keys[pg.K_SPACE]:
+                self.game_reset()
+            
 
         elif self.state == "victory":
             if self.floor >= 3:
                 self.ui.draw_game_victory()
+                keys = pg.key.get_pressed()
+                if keys[pg.K_SPACE]:
+                    self.game_reset()
             
             else:
                 font = pg.font.Font("font/PixelifySans-Bold.ttf", 40)
@@ -239,4 +247,14 @@ class GamePlay:
         self.generate_enemies()
 
     def game_reset(self):
-        self.game_over = False
+        self.floor = 1
+        self.enemy_index = 0
+        self.current_turn = "player"
+        self.selected_character = None
+        self.enemies = []
+        self.battle_log = ""
+        self.inventory = Inventory()
+        self.inventory.add_coin(100)
+        self.shop = Shop()
+        self.state = "home"  # <-- Go back to character selection or home screen
+        self.music.play()    # Optional: restart music

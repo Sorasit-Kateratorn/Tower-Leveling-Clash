@@ -126,12 +126,29 @@ class GameUI:
         font = pg.font.Font("font/PixelifySans-Bold.ttf", 60)
         text = font.render("GAME OVER", True, Config.get("RED"))
         self.screen.blit(text, (300, 250))
+        
+        
+            
+        small_font = pg.font.Font("font/PixelifySans-Bold.ttf", 30)
+        restart_text = small_font.render("Press [SPACE] to restart", True, Config.get("WHITE"))
+        self.screen.blit(restart_text, (270, 350))
+        
+        pg.display.update()
+        
 
     def draw_game_victory(self):
         self.screen.fill(Config.get("WHITE"))
         font = pg.font.Font("font/PixelifySans-Bold.ttf", 60)
         text = font.render("VICTORY!", True,  Config.get("RED"))
         self.screen.blit(text, (300, 250))
+        
+        
+                    
+        small_font = pg.font.Font("font/PixelifySans-Bold.ttf", 30)
+        restart_text = small_font.render("Press [SPACE] to restart", True, Config.get("WHITE"))
+        self.screen.blit(restart_text, (270, 350))
+        
+        pg.display.update()
 
     def draw_shop_screen(self, shop, inventory):
         self.screen.fill(Config.get("DARKBLUE"))
