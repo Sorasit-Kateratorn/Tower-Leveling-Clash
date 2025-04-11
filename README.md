@@ -45,4 +45,20 @@ python main.py
 - Make sure you have Python **3.11.9 or a compatible version** installed.
 - This setup works on Windows, macOS, and Linux environments.
 
+## 🎮 How to Play Tower-Leveling-Clash
+
+### 🔘 Game Controls
+
+| Button          | Action         | Description                                   | Image Example                |
+|----------------------|----------------|-----------------------------------------------|------------------------------|
+| Attack Button | **Attack**     | Deal basic damage to an enemy.                | ![Attack](image/attack.png) |
+| Skill Button  | **Use Skill**  | Use your character’s special ability.         | ![Skill](image/special_ability.png)   |
+| Inventory Button     | **Inventory**  | View and use items you've collected.          | ![Inventory](image/inventory.png) |
+| Shop Button   | **Shop**       | Buy items between battles using earned coins. | ![Shop](image/shop.png)     |
+| Back Button | **Go Back**    | Return to the previous screen.                | ![Back](image/back_to_battle.png)     |      |
+
+
+
+
+
 Enjoy playing Tower Leveling Clash!
