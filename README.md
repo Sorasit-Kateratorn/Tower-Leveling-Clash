@@ -5,9 +5,9 @@ Tower Leveling Clash is a Pygame-based turn-based roguelike card game where play
 ## 🧰 Requirements
 
 - Python **3.11.9** (recommended)  
-- pip 24.0  
-- pygame 2.6.1  
-- setuptools 65.5.0
+- pip >=24.0  
+- pygame >=2.6.1  
+- setuptools >=65.5.0
 
 > 💡 The game may also run on other compatible Python 3 versions (e.g., 3.10.x or 3.12.x), but Python 3.11.9 is the version this game was developed and tested with.
 
