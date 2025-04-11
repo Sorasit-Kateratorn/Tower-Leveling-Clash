@@ -35,6 +35,12 @@ class GamePlay:
         self.floor = 1
         self.using_item = False
         self.selected_item = None
+        self.floor_start_time = None
+        self.floor_end_time = None
+        self.kill_count = 0
+        self.stats_saved = False
+        
+
         
         
 
@@ -61,6 +67,9 @@ class GamePlay:
             if selected:
                 print("Selected character:", selected.name)
                 self.selected_character = selected
+                self.stats.set_play_id(random.randint(1000, 9999))
+                self.stats.set_character_name(selected.name)
+                self.stats.start_timer()
                 self.generate_enemies()
                 self.state = "battle"
 
@@ -71,6 +80,8 @@ class GamePlay:
                     if self.enemy_index < len(self.enemies):
                         target = self.enemies[self.enemy_index]
                         dmg = self.selected_character.attack_enemy(target)
+                        self.stats.record_damage(dmg)
+                        self.stats.record_damage_log(self.floor, dmg)
                         self.battle_log = f"{self.selected_character.name} attacked {target.name} for {dmg} damage!"
 
                         if dmg == 0:
@@ -78,6 +89,7 @@ class GamePlay:
 
                         if target.health <= 0:
                             self.battle_log += f" {target.name} is defeated!"
+                            self.kill_count += 1
                             self.enemies.pop(self.enemy_index)
 
                             if not self.enemies:
@@ -136,7 +148,7 @@ class GamePlay:
         
         
         elif self.state == "shop":
-            result = self.ui.draw_shop_screen(self.shop, self.inventory)
+            result = self.ui.draw_shop_screen(self.shop, self.inventory, self.stats, self.floor)
             if result == "back":
                 self.state = "battle"
 
@@ -180,7 +192,17 @@ class GamePlay:
         
         
         elif self.state == "game_over":
-            pg.mixer.music.stop() 
+            if not self.stats_saved:
+                self.stats.stop_timer()
+                self.stats.record_earned(0)
+                self.stats.record_earn_log(self.floor, 0)
+                self.floor_end_time = time.time()  
+                self.stats.record_floor_log(self.floor, self.floor_start_time, self.floor_end_time, self.kill_count)
+                self.stats.to_csv() 
+                self.stats.save_logs()
+                self.stats_saved = True
+            
+            pg.mixer.music.stop()
             self.ui.draw_game_over()
             
             keys = pg.key.get_pressed()
@@ -190,6 +212,14 @@ class GamePlay:
 
         elif self.state == "victory":
             if self.floor >= 3:
+                
+                if not self.stats_saved:
+                    self.stats.stop_timer()
+                    self.stats.record_win()
+                    self.stats.to_csv()
+                    self.stats.save_logs()
+                    self.stats_saved = True
+                    
                 self.ui.draw_game_victory()
                 keys = pg.key.get_pressed()
                 if keys[pg.K_SPACE]:
@@ -203,6 +233,14 @@ class GamePlay:
             
 
                 self.inventory.add_coin(15)
+                
+                self.stats.record_floor_clear()
+                self.stats.record_earned(15)
+                self.stats.record_earn_log(self.floor, 15)
+                
+                self.floor_end_time = time.time()  
+                self.stats.record_floor_log(self.floor, self.floor_start_time, self.floor_end_time, self.kill_count)
+
 
                 pg.display.update()
                 pg.time.delay(2000)  # Wait 2 sec to show message
@@ -221,6 +259,9 @@ class GamePlay:
             enemy = random.choice(enemy_classes)()
             enemy.scale_to_level(self.floor)
             self.enemies.append(enemy)
+            
+        self.floor_start_time = time.time()
+        self.kill_count = 0
 
     def user_event(self):
         for ev in pg.event.get():
@@ -232,6 +273,8 @@ class GamePlay:
 
         while self.running:
             self.user_event()
+            if not self.running:  # Check again after events
+                break
             self.screen_update()
             
     def next_floor(self):
@@ -256,5 +299,6 @@ class GamePlay:
         self.inventory = Inventory()
         self.inventory.add_coin(100)
         self.shop = Shop()
-        self.state = "home"  # <-- Go back to character selection or home screen
-        self.music.play()    # Optional: restart music
+        self.state = "home" 
+        self.music.play()   
+        self.stats_saved = False 

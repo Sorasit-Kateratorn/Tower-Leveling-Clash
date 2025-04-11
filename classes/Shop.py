@@ -1,5 +1,6 @@
 from classes.Item import *
 from classes.Inventory import Inventory
+from classes.GameStats import GameStats
 import random
 
 
@@ -16,7 +17,7 @@ class Shop:  # store item in shop for buy and generate new one to complete 5 ite
     def check_money(self, player_money, item):
         return player_money >= item.cost
 
-    def buy_item(self, inventory, index):
+    def buy_item(self, inventory, index, stats: GameStats=None, floor=None):
         if index < 0 or index >= len(self.items_in_shop):
             print("Invalid item selection")
             return False
@@ -25,9 +26,13 @@ class Shop:  # store item in shop for buy and generate new one to complete 5 ite
             inventory.coin -= item.cost
             inventory.add_item(item)
             print(f"Bought {item.name} for {item.cost} coins")
-            self.items_in_shop[index] = random.choice(
-                self.available_items)  # Generate a new item
-            self.items_in_shop[index] = random.choice(self.available_items)
+            
+            if stats:
+                stats.record_spent(item.cost)
+                stats.record_spend_log(floor, item.name, item.cost)
+            
+            self.items_in_shop[index] = random.choice(self.available_items)  # Generate a new item
+            return True
         else:
             print("Not enough coins")
             return False

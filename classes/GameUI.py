@@ -150,7 +150,7 @@ class GameUI:
         
         pg.display.update()
 
-    def draw_shop_screen(self, shop, inventory):
+    def draw_shop_screen(self, shop, inventory, stats, current_floor):
         self.screen.fill(Config.get("DARKBLUE"))
         font = pg.font.Font(None, 28)
         title = font.render("Welcome to the Shop!", True, Config.get("YELLOW"))
@@ -201,9 +201,9 @@ class GameUI:
             # clickable item box
             rect = pg.Rect(x, y, 80, 80)
             if rect.collidepoint(pg.mouse.get_pos()) and pg.mouse.get_pressed()[0]:
-                if not shop.buy_item(inventory, i):
+                if not shop.buy_item(inventory, i, stats, current_floor):
                     message = "Not enough coins!"
-
+                    
         if message:
             error_surface = font.render(message, True, Config.get("RED"))
             self.screen.blit(error_surface, (50, 480))
