@@ -47,15 +47,37 @@ python main.py
 
 ## 🎮 How to Play Tower-Leveling-Clash
 
+Tower-Leveling-Clash is a turn-based roguelike card game where you must battle your way through enemies on each floor and reach the top to claim victory.
+
+### 🧙 Step-by-Step Guide
+
+1. **Choose Your Hero**  
+   Begin by selecting one of the 5 unique characters — each with their own stats and special skill. Choose wisely based on your preferred playstyle.
+
+2. **Start the Battle & Visit the Shop**  
+   Once the game begins, you'll have the chance to visit the **Shop** to buy helpful items using your starting coins. Plan your purchases to gain an edge in upcoming battles.
+
+3. **Clear Each Floor**  
+   Fight through waves of enemies on each floor using attacks, skills, and items. The deeper you go, the tougher the enemies become.
+
+4. **Reach the Final Floor**  
+   Survive and defeat all enemies on every floor. If you reach and conquer the final floor — **you win the game!**
+
+> 📝 Tip: Use your skills strategically and manage your inventory to stay alive as long as possible.
+
+
+
 ### 🔘 Game Controls
 
-| Button          | Action         | Description                                   | Image Example                |
-|----------------------|----------------|-----------------------------------------------|------------------------------|
-| Attack Button | **Attack**     | Deal basic damage to an enemy.                | ![Attack](image/attack.png) |
-| Skill Button  | **Use Skill**  | Use your character’s special ability.         | ![Skill](image/special_ability.png)   |
-| Inventory Button     | **Inventory**  | View and use items you've collected.          | ![Inventory](image/inventory.png) |
-| Shop Button   | **Shop**       | Buy items between battles using earned coins. | ![Shop](image/shop.png)     |
-| Back Button | **Go Back**    | Return to the previous screen.                | ![Back](image/back_to_battle.png)     |      |
+| Action         | Description                                   | Image Example                        |
+|----------------|-----------------------------------------------|--------------------------------------|
+| **Attack**     | Deal basic damage to an enemy.                | ![Attack](image/attack.png)          |
+| **Use Skill**  | Use your character’s special ability.         | ![Skill](image/special_ability.png)  |
+| **Inventory**  | View and use items you've collected.          | ![Inventory](image/inventory.png)    |
+| **Shop**       | Buy items between battles using earned coins. | ![Shop](image/shop.png)              |
+| **Go Back**    | Return to the previous screen.                | ![Back](image/back_to_battle.png)    |
+| **Use Item**   | Use a selected item from your inventory.      | ![UseItem](image/use_item.png)       |
+| **Sell Item**  | Sell unwanted items for coins in the shop.    | ![SellItem](image/discard_items.png) |
 
 
 
