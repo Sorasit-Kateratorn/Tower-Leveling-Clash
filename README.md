@@ -25,7 +25,7 @@ cd Tower-Leveling-Clash
 ```bash
 python -m venv venv
 venv\Scripts\activate   # On Windows
-# source venv/Scripts/activate   # On macOS/Linux
+source venv/bin/activate # On Mac/Linux
 ```
 
 ### 3. Install the required packages
