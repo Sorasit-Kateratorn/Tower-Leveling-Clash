@@ -16,7 +16,7 @@ Tower Leveling Clash is a Pygame-based turn-based roguelike card game where play
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/Tower-Leveling-Clash.git
+git clone https://github.com/Sorasit-Kateratorn/Tower-Leveling-Clash.git
 cd Tower-Leveling-Clash
 ```
 
