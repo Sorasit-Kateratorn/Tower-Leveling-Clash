@@ -225,3 +225,20 @@ This table will summarize the player's performance in terms of how many floors t
 | Graph 5   | Total Earn               | Show money earned per floor per player      | Bar Graph      | Floor Number       | Coins Earned           |
 | Graph 6   | Total Spend              | Show item spending distribution             | Bar Graph      | Item Name          | Coins Spent            |
 | Graph 7   | Total Time               | Track time spent on each floor              | Line Graph     | Floor Number       | Time Spent             |
+
+## Reference
+
+### Pictures
+
+- **Character**: [Combat RPG 2000k Characters, Animations, Backgrounds, and More](https://bkx1.itch.io/combat-rpg-2000k-characters-animations-backgrounds-and-more)
+- **Potion**: [Pixel Potion Pack](https://esavvy.itch.io/pixel-posion-pack)
+- **Button (Play and Quit)**: [Manuscript Game Buttons Pixel Art Set - Getty Images](https://www.gettyimages.com/detail/illustration/manuscript-game-buttons-pixel-art-set-royalty-free-illustration/1412663898)
+- **Button (Game Control)**: [Markeus B UI Buttons - OpenGameArt](https://opengameart.org/content/markeus-b-ui-buttons)
+
+### Font
+
+- **Pixelify Sans**: [Adobe Fonts](https://fonts.adobe.com/fonts/pixelify-sans)
+
+### Sound
+
+- **Gameplay Music**: [Epidemic Sound - Adventure Genre](https://www.epidemicsound.com/music/genres/adventure/?_us=adwords&_usx=11304420166_&utm_source=google&utm_medium=paidsearch&utm_campaign=11304420166&utm_term=&gad_source=1&gclid=CjwKCAjwnPS-BhBxEiwAZjMF0vvtnjd5Lb1m7SWlghCRpa5waQTECPPwE4s1pFSuQWsbBCugnhFQ1hoCt84QAvD_BwE)
