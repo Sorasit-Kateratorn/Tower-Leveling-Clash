@@ -80,7 +80,10 @@ Tower-Leveling-Clash is a turn-based roguelike card game where you must battle y
 | **Sell Item**  | Sell unwanted items for coins in the shop.    | ![SellItem](image/discard_items.png) |
 
 
+## 🧪 Items & Effects
 
+See all in-game items, their effects, and icons here:  
+👉 [Item Reference Table](ITEMS.md)
 
 
 Enjoy playing Tower Leveling Clash!
