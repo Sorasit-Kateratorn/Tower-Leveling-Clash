@@ -272,6 +272,7 @@ class GamePlay:
             if self.floor >= 3:
                 
                 if not self.stats_saved:
+                    self.stats.record_floor_clear()
                     self.stats.stop_timer()
                     self.stats.record_win()
                     self.stats.to_csv()
