@@ -7,6 +7,12 @@ from classes.GameConfig import *
 from classes.Background import *
 from classes.Shop import *
 from classes.GameStats import *
+from plots.killchart import *
+from plots.earn_per_floor import *
+from plots.character_usage import *
+from plots.spend_distribution import *
+from plots.time_spent_per_floor import *
+from plots.total_floor_clear_table import *
 import pygame as pg
 import random
 
@@ -51,6 +57,51 @@ class GamePlay:
         self.inventory_button = Button("image/inventory.png", (650, 450), 0.5)
         self.use_skill_button = Button("image/special_ability.png", (200, 500), 0.5)
 
+
+    def show_graph_window(self):
+    #  Create a list of graph classes
+        chart_classes = [
+            KillChart,
+            EarnPerFloorChart,
+            ReachPercentChart,
+            SpendDistributionChart,
+            TimeSpentPerFloorChart,
+            FloorStatsTable
+        ]
+        chart_index = 0  # Start with the first chart
+
+        running = True
+        while running:
+            # Instantiate the current chart
+            chart = chart_classes[chart_index]()
+            graph_img = chart.get_graph_surface()
+
+            # Draw graph
+            self.screen.fill((255, 255, 255))
+            self.screen.blit(graph_img, (50, 50))  # Graph position
+
+            # Draw instructions
+            font = pg.font.Font("font/PixelifySans-Bold.ttf", 26)
+            close_text = font.render("Press [ESC] to close & [LEFT]/[RIGHT] to switch page", True, Config.get("BLACK"))
+            self.screen.blit(close_text, (50, 10))
+
+            pg.display.update()
+
+            # Handle events
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    pg.quit()
+                    exit()
+                elif event.type == pg.KEYDOWN:
+                    if event.key == pg.K_ESCAPE:
+                        running = False  # Exit graph window
+                    elif event.key == pg.K_RIGHT:
+                        chart_index = (chart_index + 1) % len(chart_classes)  # Next chart
+                    elif event.key == pg.K_LEFT:
+                        chart_index = (chart_index - 1) % len(chart_classes)  # Previous chart
+
+
+
     def screen_update(self):
         if self.state == "home":
             result = self.ui.draw_home_screen()
@@ -61,6 +112,13 @@ class GamePlay:
             elif result == "quit":
                 self.running = False
                 return
+            
+            elif result == "graph":
+                self.state = "show_graph"
+                
+        elif self.state == "show_graph":
+            self.show_graph_window() # Call a function to display the graph
+            self.state = "home" # Return back to home screen after showing the graph
 
         elif self.state == "main_game":
             selected = self.ui.draw_selected_character_screen()

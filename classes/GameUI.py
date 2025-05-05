@@ -19,6 +19,7 @@ class GameUI:
     def draw_home_screen(self):
         self.screen.fill(Config.get('WHITE'))
         font = pg.font.Font("font/PixelifySans-Bold.ttf", 50)
+        small_font = pg.font.Font("font/PixelifySans-Bold.ttf", 36)
         home_bg = Background("image/Backgroundcastle.png", [0, 0])
         start_button = Button("image/playbutton.png", [325, 300], 0.5)
         quit_button = Button("image/quitbutton.png", [325, 400], 0.5)
@@ -33,12 +34,38 @@ class GameUI:
         self.screen.blit(title_text, (158, 200))
         self.screen.blit(title_text2, (155, 200))
         # sound.play()
+        
+        
+        # Stats button
+        button_width = 150
+        button_height = 50
+
+        x_pos = Config.get("WIN_SIZE_W") - button_width - 20  # padding from right
+        y_pos = Config.get("WIN_SIZE_H") - button_height - 20  # padding from bottom
+
+        graph_button_rect = pg.Rect(x_pos, y_pos, button_width, button_height)
+        pg.draw.rect(self.screen, Config.get("DARKBROWN"), graph_button_rect) 
+        graph_text = small_font.render("Stats", True, Config.get("YELLOW")) 
+
+        text_rect = graph_text.get_rect(center=graph_button_rect.center)
+        self.screen.blit(graph_text, text_rect)
+
+        
+        
+        graph_click = False
+        if pg.mouse.get_pressed()[0]:
+            if graph_button_rect.collidepoint(pg.mouse.get_pos()):
+                graph_click = True
+        
 
         if start_click:
             return "start"
 
         elif quit_click:
             return "quit"
+        
+        elif graph_click:
+            return "graph"
 
     def draw_selected_character_screen(self):
         self.screen.fill(Config.get('WHITE'))
@@ -56,7 +83,7 @@ class GameUI:
 
         for i, button in enumerate(self.character_buttons):
             if button.draw(self.screen):  # If clicked
-                selected_character = self.characters[i]
+                selected_character = type(self.characters[i])()  # type create new instance instead of reuse the same instance
 
             name_text = name_font.render(
                 self.characters[i].name, True, Config.get("BLACK"))
