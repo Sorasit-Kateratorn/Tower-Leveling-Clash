@@ -113,6 +113,11 @@ class GameStats:
                        ["play_id", "floor", "coin_earned"])
         self._save_csv("spend.csv", self.spend_logs,
                        ["play_id", "item_bought", "floor", "coin_spent"])
+        
+        self.floor_logs.clear()
+        self.damage_logs.clear()
+        self.earn_logs.clear()
+        self.spend_logs.clear()
 
     def _save_csv(self, filename, rows, headers):
         os.makedirs("data_record", exist_ok=True)

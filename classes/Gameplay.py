@@ -152,6 +152,8 @@ class GamePlay:
 
                             if not self.enemies:
                                 self.battle_log = "You defeated all enemies! Victory!"
+                                self.floor_end_time = time.time()
+                                self.stats.record_floor_log(self.floor, self.floor_start_time, self.floor_end_time, self.kill_count)
                                 self.state = "victory"
                                 return
                         else:
@@ -273,6 +275,8 @@ class GamePlay:
                 
                 if not self.stats_saved:
                     self.stats.record_floor_clear()
+                    self.stats.record_earned(15)
+                    self.stats.record_earn_log(self.floor, 15)
                     self.stats.stop_timer()
                     self.stats.record_win()
                     self.stats.to_csv()
@@ -297,8 +301,8 @@ class GamePlay:
                 self.stats.record_earned(15)
                 self.stats.record_earn_log(self.floor, 15)
                 
-                self.floor_end_time = time.time()  
-                self.stats.record_floor_log(self.floor, self.floor_start_time, self.floor_end_time, self.kill_count)
+
+                
 
 
                 pg.display.update()
