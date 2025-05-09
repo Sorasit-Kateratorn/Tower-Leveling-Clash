@@ -21,8 +21,8 @@ class GameUI:
         font = pg.font.Font("font/PixelifySans-Bold.ttf", 50)
         small_font = pg.font.Font("font/PixelifySans-Bold.ttf", 36)
         home_bg = Background("image/Backgroundcastle.png", [0, 0])
-        start_button = Button("image/playbutton.png", [325, 300], 0.5)
-        quit_button = Button("image/quitbutton.png", [325, 400], 0.5)
+        start_button = Button("image/playbutton.png", [325, 350], 0.5)
+        quit_button = Button("image/quitbutton.png", [325, 450], 0.5)
         # sound = Sound("sound/adventure-music-229534.mp3", -1, 0, 0.1)
 
         title_text = font.render(f'Tower Leveling Clash', True, Config.get("BLACK"))

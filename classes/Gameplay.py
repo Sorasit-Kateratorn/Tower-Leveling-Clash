@@ -365,3 +365,4 @@ class GamePlay:
         self.state = "home" 
         self.music.play()   
         self.stats = GameStats()
+        self.stats_saved = False
