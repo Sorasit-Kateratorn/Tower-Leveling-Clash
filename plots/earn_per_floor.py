@@ -17,7 +17,8 @@ class EarnPerFloorChart:
         ax.set_title("Coins Earned per Floor")
         ax.set_xlabel("Floor Number")
         ax.set_ylabel("Coins Earned")
-        ax.set_xticks(earn_by_floor.index-1) 
+        ax.set_xticks(earn_by_floor.index)
+        ax.set_xticklabels([str(floor) for floor in earn_by_floor.index])
         fig.tight_layout()
 
         buf = io.BytesIO()
