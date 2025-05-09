@@ -36,7 +36,8 @@ class FloorStatsTable:
             cellText=summary.values,
             colLabels=summary.columns,
             loc='center',
-            cellLoc='center'
+            cellLoc='center',
+            colColours=["#d3d3d3"] * len(summary.columns)
         )
         table.scale(1, 1.5)
         table.auto_set_font_size(False)
