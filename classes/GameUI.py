@@ -253,11 +253,14 @@ class GameUI:
         self.screen.blit(coin_text, (600, 50))
         
         
+        def truncate_text(text, max_length=12):
+            return text if len(text) <= max_length else text[:max_length - 3] + "..."
+        
         items_per_row = 4
         item_width = 100
         item_height = 150
         padding_x = 40
-        padding_y = 30
+        padding_y = 50
 
         start_x = 60
         start_y = 120
@@ -276,7 +279,7 @@ class GameUI:
             self.screen.blit(img, (x, y))
             
             
-            name_surface =font.render(item.name, True,Config.get("WHITE"))
+            name_surface =font.render(truncate_text(item.name), True,Config.get("WHITE"))
             name_rect = name_surface.get_rect(center=(x+40,y+90))
             self.screen.blit(name_surface, name_rect)
 

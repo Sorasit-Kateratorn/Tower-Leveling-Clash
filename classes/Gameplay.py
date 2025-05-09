@@ -364,4 +364,4 @@ class GamePlay:
         self.shop = Shop()
         self.state = "home" 
         self.music.play()   
-        self.stats_saved = False 
+        self.stats = GameStats()
