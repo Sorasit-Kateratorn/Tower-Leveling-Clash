@@ -21,7 +21,7 @@ class FloorStatsTable:
         # Group by character
         summary = merged_df.groupby("character").agg(
             average_kills=pd.NamedAgg(column="total_kills", aggfunc="mean"),
-            max_floor=pd.NamedAgg(column="total_floors", aggfunc="max"),
+            max_floor_clear=pd.NamedAgg(column="total_floors", aggfunc="max"),
             average_floor=pd.NamedAgg(column="total_floors", aggfunc="mean"),
             total_games=pd.NamedAgg(column="play_id", aggfunc="count")
         ).reset_index()
