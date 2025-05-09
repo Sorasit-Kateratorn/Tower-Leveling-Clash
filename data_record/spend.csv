@@ -1,97 +1,147 @@
 play_id,item_bought,floor,coin_spent
-1442,Heal Potion,1,10
-1442,Iron Skin Tonic,1,20
-1442,Strength Potion,1,20
-8332,Heal Potion,1,10
-8332,Strength Potion,1,20
-7854,Strength Potion,1,20
-7854,Iron Skin Tonic,2,20
-7292,Heal Potion,1,10
-7292,Strength Potion,1,20
-7292,Heal Potion,1,10
-3391,Coin Boost,2,100
-9703,Iron Skin Tonic,1,20
-9703,Strength Potion,1,20
-6236,Heal Potion,1,10
-6236,Strength Potion,1,20
-6236,Heal Potion,1,10
-8482,Strength Potion,1,20
-8482,Heal Potion,1,10
-8482,Heal Potion,1,10
-2533,Strength Potion,2,20
-2533,Strength Potion,2,20
-9252,Strength Potion,1,20
-9252,Iron Skin Tonic,1,20
-9252,Strength Potion,1,20
-9281,Lucky Elixir,1,60
-9281,Iron Skin Tonic,1,20
-6727,Berserker Tonic,1,50
-6727,Berserker Tonic,1,50
-6727,Berserker Tonic,1,50
-6727,Berserker Tonic,1,50
-9763,Strength Potion,1,20
-1566,Strength Potion,3,20
-1566,Strength Potion,3,20
-1566,Strength Potion,3,20
-1566,Strength Potion,3,20
-2959,Heal Potion,1,10
-2959,Heal Potion,1,10
-8524,Heal Potion,3,10
-8524,Strength Potion,3,20
-8524,Heal Potion,3,10
-8524,Heal Potion,3,10
-8524,Strength Potion,3,20
-8524,Heal Potion,3,10
-1052,Heal Potion,1,10
-1052,Iron Skin Tonic,1,20
-1957,Heal Potion,1,10
-1957,Strength Potion,1,20
-1957,Vampire Essence,2,70
-6724,Strength Potion,1,20
-6724,Iron Skin Tonic,1,20
-6724,Strength Potion,1,20
-6724,Iron Skin Tonic,1,20
-2665,Strength Potion,1,20
-2665,Iron Skin Tonic,1,20
-6724,Strength Potion,1,20
-6724,Iron Skin Tonic,1,20
-2665,Strength Potion,1,20
-2665,Iron Skin Tonic,1,20
-6010,Heal Potion,1,10
-6010,Iron Skin Tonic,1,20
-8447,Heal Potion,3,10
-3375,Heal Potion,1,10
-3375,Strength Potion,1,20
-3375,Heal Potion,1,10
-3375,Strength Potion,1,20
-3072,Heal Potion,2,10
-3072,Vampire Essence,2,70
-3375,Heal Potion,1,10
-3375,Strength Potion,1,20
-3072,Heal Potion,2,10
-3072,Vampire Essence,2,70
-6755,Iron Skin Tonic,2,20
-6755,Strength Potion,2,20
-3375,Heal Potion,1,10
-3375,Strength Potion,1,20
-3072,Heal Potion,2,10
-3072,Vampire Essence,2,70
-6755,Iron Skin Tonic,2,20
-6755,Strength Potion,2,20
-1332,Strength Potion,2,20
-1332,Heal Potion,2,10
-3375,Heal Potion,1,10
-3375,Strength Potion,1,20
-3072,Heal Potion,2,10
-3072,Vampire Essence,2,70
-6755,Iron Skin Tonic,2,20
-6755,Strength Potion,2,20
-1332,Strength Potion,2,20
-1332,Heal Potion,2,10
-2712,Heal Potion,1,10
-2712,Iron Skin Tonic,1,20
-2810,Heal Potion,2,10
-2810,Iron Skin Tonic,2,20
-2528,Heal Potion,1,10
-2528,Iron Skin Tonic,1,20
-2528,Vampire Essence,1,70
+7068,Strength Potion,3,20
+7068,Strength Potion,3,20
+7386,Heal Potion,1,10
+7386,Vampire Essence,1,70
+5684,Heal Potion,1,10
+5684,Lucky Elixir,1,60
+5545,Strength Potion,2,20
+5545,Heal Potion,2,10
+7710,Heal Potion,2,10
+6357,Heal Potion,2,10
+9425,Heal Potion,1,10
+9425,Strength Potion,1,20
+7473,Heal Potion,1,10
+7473,Strength Potion,1,20
+1475,Strength Potion,1,20
+1475,Vampire Essence,1,70
+1475,Iron Skin Tonic,3,20
+8884,Strength Potion,1,20
+8884,Vampire Essence,1,70
+3359,Heal Potion,1,10
+3359,Strength Potion,1,20
+3359,Strength Potion,1,20
+1239,Vampire Essence,1,70
+1239,Iron Skin Tonic,1,20
+4993,Heal Potion,1,10
+4993,Strength Potion,1,20
+4993,Vampire Essence,1,70
+4993,Iron Skin Tonic,3,20
+8826,Heal Potion,1,10
+8826,Strength Potion,1,20
+8826,Heal Potion,2,10
+8826,Iron Skin Tonic,2,20
+8826,Berserker Tonic,2,50
+1774,Vampire Essence,1,70
+1774,Heal Potion,1,10
+1774,Strength Potion,1,20
+3815,Strength Potion,1,20
+3815,Heal Potion,1,10
+3815,Berserker Tonic,1,50
+3815,Iron Skin Tonic,1,20
+2818,Heal Potion,1,10
+2818,Vampire Essence,1,70
+6143,Berserker Tonic,1,50
+6143,Iron Skin Tonic,1,20
+6143,Heal Potion,1,10
+7062,Heal Potion,1,10
+7062,Strength Potion,1,20
+7062,Vampire Essence,2,70
+5925,Iron Skin Tonic,1,20
+5925,Heal Potion,1,10
+5925,Vampire Essence,1,70
+7280,Vampire Essence,1,70
+7280,Heal Potion,1,10
+7280,Strength Potion,1,20
+2886,Berserker Tonic,1,50
+2886,Strength Potion,1,20
+5796,Vampire Essence,1,70
+5796,Heal Potion,1,10
+9049,Vampire Essence,1,70
+9049,Iron Skin Tonic,1,20
+3469,Strength Potion,1,20
+3469,Iron Skin Tonic,1,20
+8504,Heal Potion,1,10
+8504,Strength Potion,1,20
+4761,Heal Potion,1,10
+6157,Strength Potion,1,20
+6157,Iron Skin Tonic,1,20
+6157,Heal Potion,1,10
+6157,Iron Skin Tonic,1,20
+6157,Iron Skin Tonic,2,20
+6157,Iron Skin Tonic,2,20
+3416,Heal Potion,1,10
+3416,Strength Potion,1,20
+6868,Heal Potion,1,10
+6868,Strength Potion,1,20
+6868,Vampire Essence,1,70
+8206,Vampire Essence,1,70
+8206,Heal Potion,1,10
+8206,Strength Potion,1,20
+2842,Vampire Essence,1,70
+2842,Heal Potion,1,10
+2842,Heal Potion,1,10
+5683,Vampire Essence,1,70
+5683,Heal Potion,1,10
+5683,Iron Skin Tonic,1,20
+2543,Heal Potion,1,10
+2543,Strength Potion,1,20
+2543,Berserker Tonic,1,50
+2543,Iron Skin Tonic,1,20
+2543,Iron Skin Tonic,3,20
+7196,Iron Skin Tonic,1,20
+7196,Heal Potion,1,10
+7196,Heal Potion,1,10
+7196,Iron Skin Tonic,1,20
+7196,Strength Potion,3,20
+7196,Berserker Tonic,3,50
+2857,Heal Potion,1,10
+2857,Berserker Tonic,1,50
+2857,Iron Skin Tonic,1,20
+6345,Iron Skin Tonic,1,20
+6345,Strength Potion,1,20
+6345,Strength Potion,1,20
+1284,Coin Boost,1,100
+1284,Vampire Essence,1,70
+1284,Strength Potion,1,20
+1284,Iron Skin Tonic,1,20
+3145,Coin Boost,1,100
+3145,Iron Skin Tonic,1,20
+3145,Lucky Elixir,1,60
+3145,Heal Potion,1,10
+4269,Heal Potion,1,10
+4269,Heal Potion,1,10
+4269,Vampire Essence,1,70
+3146,Vampire Essence,1,70
+3665,Vampire Essence,1,70
+3665,Heal Potion,1,10
+3665,Strength Potion,1,20
+6845,Heal Potion,1,10
+6845,Strength Potion,1,20
+6845,Heal Potion,1,10
+5351,Strength Potion,1,20
+5351,Heal Potion,1,10
+4368,Vampire Essence,2,70
+5803,Vampire Essence,1,70
+5803,Heal Potion,1,10
+5803,Strength Potion,1,20
+5803,Heal Potion,2,10
+5803,Strength Potion,3,20
+5582,Vampire Essence,2,70
+5582,Strength Potion,2,20
+5582,Strength Potion,3,20
+5582,Heal Potion,3,10
+5582,Heal Potion,3,10
+5316,Iron Skin Tonic,1,20
+5316,Heal Potion,1,10
+5316,Vampire Essence,1,70
+6729,Strength Potion,1,20
+6729,Iron Skin Tonic,1,20
+4614,Strength Potion,2,20
+4614,Strength Potion,2,20
+4614,Heal Potion,2,10
+4614,Heal Potion,2,10
+4614,Strength Potion,2,20
+4614,Iron Skin Tonic,2,20
+8636,Strength Potion,2,20
+8636,Vampire Essence,2,70
