@@ -11,7 +11,7 @@ class KillChart:
     def generate_graph(self):
         floor_df = pd.read_csv("data_record/floors.csv")
         stats_df = pd.read_csv("data_record/game_stats.csv")
-        avg_kills = floor_df.groupby("play_id")["kill_count"].mean().reset_index()
+        avg_kills = floor_df.groupby("play_id")["kill_count"].sum().reset_index()
         merged = pd.merge(avg_kills, stats_df[["play_id", "character"]], on="play_id")
         avg_kills_by_char = merged.groupby("character")["kill_count"].mean()
 
