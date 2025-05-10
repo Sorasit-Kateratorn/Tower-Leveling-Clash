@@ -8,6 +8,10 @@ Tower Leveling Clash is a Pygame-based turn-based roguelike card game where play
 - pip >=24.0  
 - pygame >=2.6.1  
 - setuptools >=65.5.0
+- numpy==2.2.4
+- pandas==2.2.3
+- matplotlib==3.10.1
+- pillow==11.1.0
 
 > 💡 The game may also run on other compatible Python 3 versions (e.g., 3.10.x or 3.12.x), but Python 3.11.9 is the version this game was developed and tested with.
 
@@ -87,3 +91,19 @@ See all in-game items, their effects, and icons here:
 
 
 Enjoy playing Tower Leveling Clash!
+
+
+
+## UML Diagram
+
+Below is the UML diagram for the project structure
+
+![UML Diagram](uml_class_diagram.svg)
+
+---
+
+## 🔗 Resources
+
+* 🎥 YouTube Presentation Video: [Gameplay]()
+
+---

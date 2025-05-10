@@ -79,52 +79,33 @@ This project was inspired by **Mizuno Duel** (a Discord bot), a turn-based card 
 **Key OOP Improvements:**
 
 - Separation of concerns through dedicated classes:
-  - `Character`, `Inventory`, `Item`, `Shop`, `Save`, `GamePlay`, and `GamePlayUI`
+  - `Character`, `Inventory`, `Item`, `Shop`, `GameStats`, `GamePlay`, and `GamePlayUI`
 - Improved game state management.
 - Easier to expand features (e.g., new enemies, shop items) without modifying core logic.
 
 ---
 
-#### `Class Shop`
-- **Functionality**:  
-  Stores 5 items in the shop. When a user buys one, a new item is generated to refill the slot.
+#### `Class Shop`: Stores 5 items in the shop. When a user buys one, a new item is generated to refill the slot.
 
----
+#### `Class Character`: Manages character stats and actions in battle.
 
-#### `Class Character`
-- **Functionality**:  
-  Manages character stats and actions in battle.
+#### `Class Item`: Stores all details for usable items in the game.
 
----
+#### `Class GamePlay`: Manages the main game loop, floor progression, and win/loss conditions.  Save data for each round into a `GameStats` class, enabling easy expansion for features like inventory or achievements tracking.
 
-#### `Class Item`
-- **Functionality**:  
-  Stores all details for usable items in the game.
+#### `Class Inventory`: Manages the player’s coins and items available for use in battle.
 
----
+#### `Class GamePlayUI`: Renders all graphical components and interfaces for user interaction.
 
-#### `Class GamePlay`
-- **Functionality**:  
-  Manages the main game loop, floor progression, and win/loss conditions.  
-  Save data for each round into a `GameStats` class, enabling easy expansion for features like inventory or achievements tracking.
+#### `Class GameStats` : Collects gameplay data and exports it to a CSV file for analysis or visualization.
 
----
+#### `Class AvgAttackPerFloorChart, ReachPercentChart,EarnPerFloorChart, KillChart, SpendDistributionChart, TimeSpentPerFloorChart, FloorStatsTable`  : Each class generates a specific graph or summary table using Matplotlib. Used to visualize game statistics after multiple sessions.
 
-#### `Class Inventory`
-- **Functionality**:  
-  Manages the player’s coins and items available for use in battle.
+#### `Class Sound` : Manages background music and sound effects throughout the game.
 
----
+#### `Class Config` : Stores global configuration constants such as screen size, grid size, and color themes.
 
-#### `Class GamePlayUI`
-- **Functionality**:  
-  Renders all graphical components and interfaces for user interaction.
-
----
-
-#### `Class GameStats`
-- **Functionality**:  
-  Collects gameplay data and exports it to a CSV file for analysis or visualization.
+#### `Class Background` : Handles loading and drawing background images for each screen
 
 ## 3.3 Algorithms Involved
 
@@ -209,22 +190,41 @@ This table will summarize the player's performance in terms of how many floors t
 
 | **Character** | **Average Kills** | **Max Floor Reached** | **Average Floor** | **Total Games** |
 |---------------|-------------------|------------------------|-------------------|-----------------|
-| Wizard        | 9.8               | 16                     | 10.1              | 10              |
+| Wizard        | 9.8               | 3                     | 10.1              | 10              |
 
 
 
 
 ## Graph Overview Table
 
-| **Graph** | **Feature Name**        | **Objective**                               | **Graph Type** | **X-axis**        | **Y-axis**            |
+| **Graph** | **Feature Name**        | **Objective**                               | **Graph Type** | **X-axis**        | **Y-axis**            | 
 |-----------|--------------------------|---------------------------------------------|----------------|-------------------|------------------------|
 | Graph 1   | Total Floors Cleared     | Show average kill count per character       | Bar Graph      | Character Name     | Avg Kills              |
 | Graph 2   | Total Floors Cleared     | Show % of characters reaching floor N       | Pie Chart      | Character Name     | % Reach Floor N        |
-| Graph 3   | Character Usage          | Show which character is picked most often   | Pie Chart      | Character Name     | Usage Frequency        |
-| Graph 4   | Damage Dealt             | Track average attack per floor              | Line Graph     | Floor Number       | Avg Attack Points      |
-| Graph 5   | Total Earn               | Show money earned per floor per player      | Bar Graph      | Floor Number       | Coins Earned           |
-| Graph 6   | Total Spend              | Show item spending distribution             | Bar Graph      | Item Name          | Coins Spent            |
-| Graph 7   | Total Time               | Track time spent on each floor              | Line Graph     | Floor Number       | Time Spent             |
+| Graph 3   | Total Earn               | Show money earned per floor per player      | Bar Graph      | Floor Number       | Coins Earned           |
+| Graph 4   | Total Spend              | Show item spending distribution             | Bar Graph      | Item Name          | Coins Spent            |
+| Graph 5   | Total Time               | Track time spent on each floor              | Line Graph     | Floor Number       | Time Spent             |
+
+
+
+## UML Diagram
+
+Below is the UML diagram for the project structure
+
+![UML Diagram](uml_class_diagram.svg)
+
+---
+
+## 🔗 Resources
+
+* 🎥 YouTube Presentation Video: [Gameplay]()
+
+---
+
+
+
+
+
 
 ## Reference
 
