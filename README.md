@@ -98,7 +98,7 @@ Enjoy playing Tower Leveling Clash!
 
 Below is the UML diagram for the project structure
 
-![UML Diagram](uml_class_diagram.svg)
+<img src="uml_class_diagram.svg" alt="UML Diagram" width="100%" />
 
 ---
 
