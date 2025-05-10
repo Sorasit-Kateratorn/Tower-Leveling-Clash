@@ -211,7 +211,7 @@ This table will summarize the player's performance in terms of how many floors t
 
 Below is the UML diagram for the project structure
 
-![UML Diagram](uml_class_diagram.svg)
+<img src="https://raw.githubusercontent.com/Sorasit-Kateratorn/Tower-Leveling-Clash/main/uml_class_diagram.svg" alt="UML Diagram" width="600">
 
 ---
 
@@ -242,3 +242,6 @@ Below is the UML diagram for the project structure
 ### Sound
 
 - **Gameplay Music**: [Epidemic Sound - Adventure Genre](https://www.epidemicsound.com/music/genres/adventure/?_us=adwords&_usx=11304420166_&utm_source=google&utm_medium=paidsearch&utm_campaign=11304420166&utm_term=&gad_source=1&gclid=CjwKCAjwnPS-BhBxEiwAZjMF0vvtnjd5Lb1m7SWlghCRpa5waQTECPPwE4s1pFSuQWsbBCugnhFQ1hoCt84QAvD_BwE)
+
+---
+[🔗 View on GitHub](https://github.com/Sorasit-Kateratorn/Tower-Leveling-Clash)

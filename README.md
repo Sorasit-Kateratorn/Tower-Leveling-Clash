@@ -84,6 +84,11 @@ Tower-Leveling-Clash is a turn-based roguelike card game where you must battle y
 | **Sell Item**  | Sell unwanted items for coins in the shop.    | ![SellItem](image/discard_items.png) |
 
 
+## 🧙‍♂️ Characters
+👉 [Characters Reference Table](CHARACTERS.md)
+
+
+
 ## 🧪 Items & Effects
 
 See all in-game items, their effects, and icons here:  
