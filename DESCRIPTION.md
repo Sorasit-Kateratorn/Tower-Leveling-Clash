@@ -217,7 +217,7 @@ Below is the UML diagram for the project structure
 
 ## 🔗 Resources
 
-* 🎥 YouTube Presentation Video: [Gameplay]()
+* 🎥 YouTube Presentation Video: [Gameplay](https://youtu.be/L6LfT4Vwb1E)
 
 ---
 
