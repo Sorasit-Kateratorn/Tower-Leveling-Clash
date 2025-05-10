@@ -20,7 +20,6 @@ class Button(pg.sprite.Sprite):
 
         if self.rect.collidepoint(mouse_pos):
             if pg.mouse.get_pressed()[0] == 1 and self.clicked == False:
-                print("Cliked")
                 self.clicked = True
                 action = True
 

@@ -26,7 +26,6 @@ class Omen(Character):
         super().__init__("image/Omen.png", "Omen", 120, 19, 6, "Shadow Strike")
 
     def use_ability(self, enemies):
-        print(f"{self.name} uses Shadow Strike and evades the next attack!")
         
         for enemy in enemies:
             enemy.take_damage(20)

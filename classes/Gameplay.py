@@ -106,7 +106,6 @@ class GamePlay:
         if self.state == "home":
             result = self.ui.draw_home_screen()
             if result == "start":
-                print("start button click")
                 self.state = "main_game"
 
             elif result == "quit":
@@ -123,7 +122,6 @@ class GamePlay:
         elif self.state == "main_game":
             selected = self.ui.draw_selected_character_screen()
             if selected:
-                print("Selected character:", selected.name)
                 self.selected_character = selected
                 self.stats.set_play_id(random.randint(1000, 9999))
                 self.stats.set_character_name(selected.name)
